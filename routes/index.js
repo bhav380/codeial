@@ -6,7 +6,18 @@ const homeController = require('../controllers/home_controller');
 
 const postsController = require('../controllers/posts_controller');
 
+
+
+
+
+
+
 router.get('/', homeController.home);
+
+
+
+
+
 
 router.use('/user', require('./user'));
 
