@@ -1,0 +1,14 @@
+#feed-posts{
+    margin-top:200px;
+}
+
+#new-post-form textarea{
+    border:1px solid black;
+    margin-top: 20px;;
+}
+
+#posts-container{
+    margin:auto;
+    margin-top:60px;
+   
+}

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/home.css">
+
 <h1>
     Codeial / <%= title %>
 </h1>
@@ -7,8 +9,99 @@
         Posts
     </h4>
 
-    <form action="" id="new-post-form" method="POST">
-        <textarea name="content" id="" cols="30" rows="3"></textarea>
-        <input type="submit" value="Post">
-    </form>
+    <%if(locals.user){%>
+        <form action="/posts/create" id="new-post-form" method="POST">
+            <textarea name="content" id="" cols="30" rows="3"></textarea>
+            <input type="submit" value="Post">
+        </form>
+
+    <%}%>
+
+   
+
+
+
+
+
+    <div id="posts-container">
+
+        <ul>
+
+
+
+            <%for(post of posts){%>
+
+                <p>
+
+                    <li class="post"><b>Post : </b>
+                        <%=post.content%>
+                    </li>
+                    <small><b>Name : </b>
+                        <%=post.user.fname%>
+                            <%= post.user.lname%>
+                    </small><br>
+                    <small>
+                        <%= post.user.createdAt%>
+                    </small>
+
+                </p>
+
+                <% if(locals.user){%>
+                    <form action="/comments/create/<%=post._id%>" id="new-comment-form" method="POST">
+                        <textarea name="content" id="" cols="30" rows="3"></textarea>
+                        <input type="submit" value="comment">
+                    </form>
+
+                <%}%>
+
+
+              
+
+                <ul>
+                    <%for(let comment of post.comments){%>
+
+
+                    <li class="comment">
+
+                        <p>
+                            <%=comment.body%>
+
+                        </p>
+
+                        <p><%=comment.user.fname%> <%=comment.user.lname%></p>
+                       
+                    </li>
+
+                    <%}%>
+
+
+
+
+                    
+                </ul>
+
+
+                <%}%>
+
+        </ul>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section>
